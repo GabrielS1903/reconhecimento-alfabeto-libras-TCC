@@ -1,0 +1,111 @@
+/* variáveis principais */
+:root {
+  --cor-fundo: #0d1220;                  /* Cor sólida de fundo */
+  --border: rgba(255,255,255,0.06);      /* Borda translúcida dos painéis */
+  --roxo: #7b5cff;                       /* Cor roxa de destaque */
+  --rosa: #ff5c7a;                       /* Cor rosa de destaque */
+  --texto: #e6eef8;                      /* Cor principal do texto */
+  --texto-suave: #98a0b3;                /* Texto secundário */
+}
+
+/* fundo geral */
+body.fundo-escuro {
+  background: var(--cor-fundo);
+  color: var(--texto);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* card principal */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--texto);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+}
+
+/* botão de voltar */
+.botao-voltar {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.05);
+  color: var(--texto);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+.botao-voltar:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* título principal */
+.titulo-pagina, h5, h2, h3, p, label {
+  color: var(--texto);
+}
+
+/* vídeo e moldura da câmera */
+.video-quadro {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  background: #02040a;
+  border-radius: 10px;
+}
+
+/* rótulo e confiança da predição */
+.rotulo-predicao {
+  background: rgba(255,255,255,0.05);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--texto);
+}
+.rotulo-predicao.grande {
+  font-size: 28px;
+}
+.confianca-predicao {
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+/* contador circular */
+.contador-circular {
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: var(--texto);
+}
+
+/* letra alvo */
+.alvo-sinal {
+  display: inline-block;
+  background: rgba(255,255,255,0.05);
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* texto auxiliar */
+.texto-suave {
+  color: var(--texto-suave);
+}
+.pequeno {
+  font-size: 14px;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+  .video-quadro { height: 280px; }
+  .card { padding: 1rem; }
+}

@@ -1,0 +1,144 @@
+/* cores principais e variáveis globais */
+:root {
+  --cor-fundo: #0d1220;                 /* Fundo sólido escuro */
+  --card: rgba(255,255,255,0.06);/* Borda translúcida */
+  --roxo: #7b5cff;                      /* Roxo principal */
+  --rosa: #ff5c7a;                      /* Rosa de destaque */
+  --texto: #ffffff;                     /* Texto branco */
+  --texto-suave: #d4d8e3;               /* Texto levemente acinzentado */
+}
+
+/* fundo e body da página */
+body.fundo-escuro {
+  background: var(--cor-fundo);
+  color: var(--texto);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* card com efeito translúcido */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card);
+  border-radius: 14px;
+  color: var(--texto);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+}
+
+/* botão de voltar */
+.botao-voltar {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.05);
+  color: var(--texto);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.12s ease;
+}
+.botao-voltar:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* títulos e textos */
+.titulo-pagina, h5, h2, h3, p, label {
+  color: var(--texto);
+}
+
+/* área de vídeo da câmera */
+.area-camera {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.video-quadro {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  background: #02040a;
+  border-radius: 10px;
+}
+
+/* sobreposição de predição (letra e confiança) */
+.camera-sobreposicao {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rotulo-predicao {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 800;
+  color: var(--texto);
+}
+.confianca-predicao {
+  color: var(--texto-suave);
+  font-size: 13px;
+}
+
+/* caixa de texto */
+.area-texto-escura {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--texto);
+  padding: 14px;
+  border-radius: 8px;
+  resize: none;
+  height: 420px;
+}
+.area-texto-escura::placeholder {
+  color: var(--texto-suave);
+}
+
+/* botões de ação (Limpar e Backspace) */
+.botao-acao {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--texto);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(6px);
+}
+.botao-acao:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+.botao-acao:active {
+  transform: scale(0.97);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* contador circular de tempo */
+.contador-circular {
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  color: var(--texto);
+}
+
+/* texto auxiliar abaixo do contador */
+.texto-suporte {
+  color: var(--texto);
+  opacity: 0.85;
+}
+
+/* responsividade para telas menores */
+@media (max-width: 768px) {
+  .video-quadro { height: 280px; }
+  .area-texto-escura { height: 260px; }
+  .cartao-vidro { padding: 1rem; }
+}

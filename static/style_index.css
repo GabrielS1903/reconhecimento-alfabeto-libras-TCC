@@ -1,0 +1,69 @@
+/* variáveis de cor e tema base */
+:root {
+  --cor-fundo: #0d1220;          /* Cor sólida de fundo */
+  --cor-principal1: #7b5cff;     /* Roxo principal */
+  --cor-principal2: #ff5c7a;     /* Rosa secundário */
+  --card: rgba(255,255,255,0.06); /* Cor da borda translúcida */
+  --texto-claro: #e6eef8;        /* Cor de texto padrão */
+}
+
+/* body e fundo sólido */
+body.fundo-solido {
+  background: var(--cor-fundo);
+  color: var(--texto-claro);
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* card central com efeito */
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  color: var(--texto-claro);
+  padding: 2rem;
+}
+
+/* título principal */
+.titulo-app {
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 6px 30px rgba(123,92,255,0.12);
+}
+
+/* botões principais */
+.btn-grande-primario,
+.btn-grande-secundario {
+  border-radius: 40px;              /* Borda arredondada */
+  padding: 14px 40px;               /* Tamanho e espaçamento interno */
+  font-weight: 700;
+  color: #fff;
+  transition: transform 0.14s ease, filter 0.12s ease;
+  box-shadow: none;                 /* Remove sombras externas */
+}
+
+/* botão principal (gradiente roxo → rosa) */
+.btn-grande-primario {
+  background: linear-gradient(90deg, var(--cor-principal1), var(--cor-principal2));
+  border: none;
+}
+
+/* botão secundário (versão mais suave translúcida) */
+.btn-grande-secundario {
+  background: linear-gradient(90deg, rgba(123,92,255,0.25), rgba(255,92,122,0.18));
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* efeito hover: leve elevação e brilho */
+.btn-grande-primario:hover,
+.btn-grande-secundario:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+}
