@@ -1,25 +1,23 @@
-/* cores principais e variáveis globais */
 :root {
-  --cor-fundo: #0d1220;                 /* Fundo sólido escuro */
-  --card: rgba(255,255,255,0.06);/* Borda translúcida */
-  --roxo: #7b5cff;                      /* Roxo principal */
-  --rosa: #ff5c7a;                      /* Rosa de destaque */
-  --texto: #ffffff;                     /* Texto branco */
-  --texto-suave: #d4d8e3;               /* Texto levemente acinzentado */
+  --cor-fundo: #0d1220;
+  --card: rgba(255, 255, 255, 0.06);
+  --roxo: #7b5cff;
+  --rosa: #ff5c7a;
+  --texto: #ffffff;
+  --texto-suave: #d4d8e3;
 }
 
-/* fundo e body da página */
 body.fundo-escuro {
   background: var(--cor-fundo);
   color: var(--texto);
   font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-  min-height: 100vh;
   margin: 0;
+  min-height: 100vh;
 }
 
-/* card com efeito translúcido */
+/* card e estrutura */
 .card {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--card);
   border-radius: 14px;
   color: var(--texto);
@@ -27,10 +25,10 @@ body.fundo-escuro {
   padding: 1.5rem;
 }
 
-/* botão de voltar */
+/* botão voltar */
 .botao-voltar {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--texto);
   padding: 8px 14px;
   border-radius: 10px;
@@ -38,21 +36,27 @@ body.fundo-escuro {
   text-decoration: none;
   transition: background 0.12s ease;
 }
+
 .botao-voltar:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
 }
 
-/* títulos e textos */
-.titulo-pagina, h5, h2, h3, p, label {
+.titulo-pagina,
+h5,
+h2,
+h3,
+p,
+label {
   color: var(--texto);
 }
 
-/* área de vídeo da câmera */
+/* câmera  */
 .area-camera {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
 }
+
 .video-quadro {
   width: 100%;
   height: 420px;
@@ -61,42 +65,76 @@ body.fundo-escuro {
   border-radius: 10px;
 }
 
-/* sobreposição de predição (letra e confiança) */
-.camera-sobreposicao {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.rotulo-predicao {
-  background: rgba(255,255,255,0.1);
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-weight: 800;
-  color: var(--texto);
-}
-.confianca-predicao {
-  color: var(--texto-suave);
-  font-size: 13px;
+/* caixa de predição externa */
+.caixa-predicao-externa {
+  background: #1b1f35;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+  min-width: 130px;
+  text-align: center;
 }
 
-/* caixa de texto */
+.rotulo-predicao {
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--texto);
+}
+
+.confianca-predicao {
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* contador circular contínuo */
+.contador-circular-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 8;
+}
+
+.progress-ring-bar {
+  fill: none;
+  stroke: var(--roxo);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+.contador-circular-numero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--texto);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Caixa de texto */
 .area-texto-escura {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--texto);
   padding: 14px;
   border-radius: 8px;
   resize: none;
   height: 420px;
 }
+
 .area-texto-escura::placeholder {
   color: var(--texto-suave);
 }
 
-/* botões de ação (Limpar e Backspace) */
+/* botões */
 .botao-acao {
   flex: 1;
   background: rgba(255, 255, 255, 0.08);
@@ -105,40 +143,26 @@ body.fundo-escuro {
   padding: 12px 18px;
   border-radius: 10px;
   font-weight: 600;
-  letter-spacing: 0.3px;
   transition: all 0.2s ease;
-  backdrop-filter: blur(6px);
 }
+
 .botao-acao:hover {
   background: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
+
 .botao-acao:active {
   transform: scale(0.97);
   background: rgba(255, 255, 255, 0.16);
 }
 
-/* contador circular de tempo */
-.contador-circular {
-  width: 92px;
-  height: 92px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.08);
-  border-radius: 50%;
-  color: var(--texto);
-}
-
-/* texto auxiliar abaixo do contador */
-.texto-suporte {
-  color: var(--texto);
-  opacity: 0.85;
-}
-
-/* responsividade para telas menores */
+/* responsividade */
 @media (max-width: 768px) {
-  .video-quadro { height: 280px; }
-  .area-texto-escura { height: 260px; }
-  .cartao-vidro { padding: 1rem; }
+  .video-quadro {
+    height: 280px;
+  }
+
+  .caixa-predicao-externa {
+    min-width: 100px;
+  }
 }

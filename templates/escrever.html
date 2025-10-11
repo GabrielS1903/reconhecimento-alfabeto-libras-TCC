@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reconhecimento de Libras</title>
+  <title>Reconhecimento de Libras - Modo Escrever</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS personalizado -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style_escrever.css') }}">
 </head>
 
 <body class="fundo-escuro">
   <div class="container py-5">
 
-    <!-- Cabeçalho  -->
+    <!-- Cabeçalho -->
     <div class="d-flex align-items-center justify-content-between mb-4">
       <a href="{{ url_for('home') }}" class="btn botao-voltar">Início</a>
       <h2 class="m-0 titulo-pagina">Modo Escrever</h2>
@@ -20,23 +24,36 @@
 
     <!-- Estrutura principal -->
     <div class="row g-4">
+      <!-- Coluna da câmera -->
       <div class="col-lg-7">
         <div class="card p-3 h-100">
-          <div class="area-camera">
-            <video id="video-escrever" autoplay muted playsinline class="video-quadro"></video>
-            
-            <!-- Área sobreposta com predição -->
-            <div class="camera-sobreposicao">
+          <div class="area-camera position-relative">
+            <!-- Vídeo -->
+            <video id="video-escrever" autoplay playsinline class="video-quadro"></video>
+          </div>
+
+          <!-- Linha inferior com predição e contador -->
+          <div class="d-flex align-items-center justify-content-start gap-4 mt-4 flex-wrap">
+
+            <!-- Caixa de predição fora da câmera -->
+            <div class="caixa-predicao-externa p-3">
               <div id="rotulo-predicao" class="rotulo-predicao">—</div>
               <div id="confianca-predicao" class="confianca-predicao">—</div>
             </div>
-          </div>
 
-          <!-- Contagem regressiva -->
-          <div class="d-flex align-items-center gap-3 mt-3">
-            <div id="contador" class="contador-circular"></div>
+            <!-- Contador circular animado -->
+            <div class="contador-circular-wrapper">
+              <svg id="progress-ring" class="progress-ring" width="100" height="100">
+                <circle class="progress-ring-bg" cx="50" cy="50" r="45" />
+                <circle id="progress-ring-circle" class="progress-ring-bar" cx="50" cy="50" r="45" />
+              </svg>
+              <div id="contador" class="contador-circular-numero">3</div>
+            </div>
+
             <div>
-              <div class="small texto-suporte">Mantenha o sinal por 3 segundos para confirmar a letra</div>
+              <div class="small texto-suporte">
+                Mantenha o sinal por 3 segundos para confirmar a letra
+              </div>
             </div>
           </div>
         </div>
@@ -47,13 +64,16 @@
         <div class="card p-3 h-100 d-flex flex-column">
           <h5 class="mb-3">Texto</h5>
           <textarea id="saida-texto" class="form-control area-texto-escura mb-3" rows="12" readonly></textarea>
+          
           <div class="mt-auto d-flex gap-2">
-            <button id="botao-apagar" class="btn botao-acao">Backspace</button>
-            <button id="botao-limpar" class="btn botao-acao">Limpar</button>
+            <button id="botao-apagar" class="btn botao-acao flex-fill">Backspace</button>
+            <button id="botao-limpar" class="btn botao-acao flex-fill">Limpar</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="{{ url_for('static', filename='escrever.js') }}"></script>
 </body>
 </html>
