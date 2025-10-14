@@ -121,17 +121,19 @@ label {
 
 /* Caixa de texto */
 .area-texto-escura {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--texto);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #000000;
   padding: 14px;
   border-radius: 8px;
   resize: none;
   height: 420px;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .area-texto-escura::placeholder {
-  color: var(--texto-suave);
+  color: #555555;
 }
 
 /* botões */

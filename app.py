@@ -8,10 +8,10 @@ import base64
 app = Flask(__name__)
 
 # carrega o modelo e o codificador de rótulos
-with open('modelo.p', 'rb') as arquivo_modelo:
+with open('model.p', 'rb') as arquivo_modelo:
     modelo = pickle.load(arquivo_modelo)
 
-with open('codificador_rotulos.p', 'rb') as arquivo_encoder:
+with open('label_encoder.p', 'rb') as arquivo_encoder:
     codificador_rotulos = pickle.load(arquivo_encoder)
 
 # inicializa o MediaPipe para detecção de mãos
@@ -23,17 +23,16 @@ maos = mp_maos.Hands(
 )
 
 @app.route('/')
-def inicio():
+def index():
     return render_template('index.html')
 
 @app.route('/escrever')
-def pagina_escrever():
+def escrever():
     return render_template('escrever.html')
 
 @app.route('/quiz')
-def pagina_quiz():
+def quiz():
     return render_template('quiz.html')
-
 
 # rota de predição (recebe imagem da câmera e devolve a letra prevista)
 @app.route('/prever', methods=['POST'])

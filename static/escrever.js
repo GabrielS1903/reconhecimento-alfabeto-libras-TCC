@@ -49,10 +49,10 @@ async function enviarFrame() {
   const dataUrl = canvas.toDataURL('image/jpeg');
 
   try {
-    const resposta = await fetch('/predict', {
+    const resposta = await fetch('/prever', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ image: dataUrl })
+      body: JSON.stringify({ imagem: dataUrl })
     });
 
     const resultado = await resposta.json();
