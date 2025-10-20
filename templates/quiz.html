@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reconhecimento de Libras</title>
+  <title>Reconhecimento de Libras - Modo Quiz</title>
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS personalizado -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style_quiz.css') }}">
 </head>
 
@@ -14,37 +18,71 @@
     <!-- Cabeçalho -->
     <div class="d-flex align-items-center justify-content-between mb-4">
       <a href="{{ url_for('index') }}" class="btn botao-voltar">Início</a>
-      <h2 class="m-0 titulo-pagina">Modo Quiz</h2>
       <div style="width:120px;"></div>
     </div>
 
-    <!-- Letra alvo e progresso -->
-    <div class="text-center mb-4">
-      <div class="alvo-sinal">Faça o sinal da letra <strong id="letra-alvo">A</strong></div>
-      <div class="texto-suave pequeno mt-2" id="progresso-quiz">0 / 26</div>
-    </div>
-
-    <!-- Área de vídeo -->
+    <!-- Estrutura principal -->
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <div class="card p-3 text-center">
+        <div class="card p-4 text-center">
+
+          <!-- Área da câmera -->
           <video id="video-quiz" autoplay muted playsinline class="video-quadro"></video>
 
-          <!-- Predição e contador -->
-          <div class="mt-3 d-flex align-items-center gap-3 justify-content-center">
-            <div id="contador-quiz" class="contador-circular"></div>
-            <div>
-              <div id="predicao-quiz" class="rotulo-predicao grande">—</div>
+          <!-- Linha com predição, contador e letra alvo -->
+          <div class="predicao-centralizada mt-4 d-flex flex-row align-items-center justify-content-center gap-4 flex-wrap">
+
+            <!-- Caixa de predição igual ao modo escrever -->
+            <div class="caixa-predicao-externa p-3">
+              <div id="rotulo-quiz" class="rotulo-predicao">—</div>
               <div id="confianca-quiz" class="confianca-predicao">—</div>
+            </div>
+
+            <!-- Contador circular animado -->
+            <div class="contador-circular-wrapper">
+              <svg id="progress-ring" class="progress-ring" width="100" height="100">
+                <circle class="progress-ring-bg" cx="50" cy="50" r="45" />
+                <circle id="progress-ring-circle" class="progress-ring-bar" cx="50" cy="50" r="45" />
+              </svg>
+              <div id="contador-quiz" class="contador-circular-numero">3</div>
+            </div>
+
+            <!-- Bloco com a letra alvo e o progresso atual -->
+            <div class="bloco-letra-alvo text-center">
+              <div class="alvo-sinal">
+                Faça o sinal da letra <strong id="letra-alvo"></strong>
+              </div>
+              <div class="texto-suave pequeno mt-2" id="progresso-quiz"></div>
             </div>
           </div>
 
-          <!-- Mensagem de feedback -->
-          <div id="mensagem-quiz" class="mt-3"></div>
+          <!-- Texto de instrução e feedback -->
+          <div class="mt-4">
+            <div class="small texto-suporte">
+              Mantenha o sinal por 3 segundos para confirmar a letra
+            </div>
+            <div id="mensagem-quiz" class="mt-3 texto-feedback"></div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
+
+  <!-- Modal de final do quiz -->
+  <div id="modal-final" class="modal-final d-none">
+    <div class="modal-conteudo">
+      <h3 class="titulo-modal">Parabéns!</h3>
+      <p class="texto-modal">Você completou o quiz com sucesso!</p>
+
+      <!-- Botões do modal -->
+      <div class="botoes-modal">
+        <button id="btn-reiniciar" class="btn-modal primario">Jogar novamente</button>
+        <a href="{{ url_for('index') }}" class="btn-modal secundario">Ir para o início</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script principal -->
+  <script src="{{ url_for('static', filename='quiz.js') }}"></script>
 </body>
 </html>
