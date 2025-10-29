@@ -5,7 +5,7 @@ Definições iniciais:
 
 Linguagem: Python.
 
-TensorFlow / TensorFlow Object Detection API:	Treinar / executar o modelo de detecção. O Object Detection API do TensorFlow permite detectar gestos / sinais em imagens contínuas.
+MediaPipe Hands: Detecção dos landmarks.
 
 OpenCV:	Captura de vídeo / processamento de imagens.
 
