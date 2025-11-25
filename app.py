@@ -41,7 +41,7 @@ def prever():
     imagem_codificada = dados.get('imagem')
 
     if not imagem_codificada:
-        return jsonify({'letra': None, 'confianca': 0})
+        return jsonify({'letra': None, 'confianca': 0, 'landmarks': []})
 
     # decodifica a imagem base64
     imagem_bytes = base64.b64decode(imagem_codificada.split(',')[1])
@@ -52,7 +52,7 @@ def prever():
     resultados = maos.process(quadro_rgb)
 
     if not resultados.multi_hand_landmarks:
-        return jsonify({'letra': None, 'confianca': 0})
+        return jsonify({'letra': None, 'confianca': 0, 'landmarks': []})
 
     # extrai as coordenadas da mão
     pontos_mao = resultados.multi_hand_landmarks[0]
@@ -72,7 +72,9 @@ def prever():
     probabilidades = modelo.predict_proba(dados_mao)
     confianca = float(np.max(probabilidades))
 
-    return jsonify({'letra': letra_prevista, 'confianca': confianca})
+    landmarks_json = [{'x': p.x, 'y': p.y} for p in pontos_mao.landmark]
+
+    return jsonify({'letra': letra_prevista, 'confianca': confianca, 'landmarks': landmarks_json})
 
 
 if __name__ == '__main__':

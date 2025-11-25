@@ -91,6 +91,20 @@ with mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confi
                 # Adiciona o rótulo correspondente
                 labels.append(label)
 
+                # -------------------------------------------------------
+                # 6.1 Adição da versão espelhada (simula a mão esquerda)
+                # -------------------------------------------------------
+
+                # Copia os landmarks normalizados
+                coords_flip = coords.copy()
+
+                # Espelha o eixo X (isso gera a geometria oposta da mão)
+                coords_flip[:, 0] = 1.0 - coords_flip[:, 0]
+
+                # Armazena a versão espelhada como se fosse outra imagem válida
+                data.append(coords_flip.flatten())
+                labels.append(label)
+
 # -------------------------------------------------------
 # 7. Salvamento do dataset em arquivo .npz
 # -------------------------------------------------------

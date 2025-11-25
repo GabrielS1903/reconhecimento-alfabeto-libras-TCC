@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -27,10 +28,14 @@
         <div class="card p-4 text-center">
 
           <!-- Área da câmera -->
-          <video id="video-quiz" autoplay muted playsinline class="video-quadro"></video>
+          <div class="area-camera position-relative">
+            <video id="video-quiz" autoplay muted playsinline class="video-quadro" style="width: 100%; height: auto;"></video>
+            <canvas id="canvas-landmarks-quiz" style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+          </div>
 
           <!-- Linha com predição, contador e letra alvo -->
-          <div class="predicao-centralizada mt-4 d-flex flex-row align-items-center justify-content-center gap-4 flex-wrap">
+          <div
+            class="predicao-centralizada mt-4 d-flex flex-row align-items-center justify-content-center gap-4 flex-wrap">
 
             <!-- Caixa de predição igual ao modo escrever -->
             <div class="caixa-predicao-externa p-3">
@@ -85,4 +90,5 @@
   <!-- Script principal -->
   <script src="{{ url_for('static', filename='quiz.js') }}"></script>
 </body>
+
 </html>
