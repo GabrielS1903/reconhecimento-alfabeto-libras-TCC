@@ -50,22 +50,23 @@ label {
   color: var(--texto);
 }
 
-/* câmera  */
+/* câmera */
 .area-camera {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
 }
 
+/* área da câmera aumentada */
 .video-quadro {
   width: 100%;
-  height: 420px;
+  height: 520px;
   object-fit: cover;
   background: #02040a;
   border-radius: 10px;
 }
 
-/* caixa de predição externa */
+/* caixa de predição */
 .caixa-predicao-externa {
   background: #1b1f35;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -86,7 +87,7 @@ label {
   color: var(--texto-suave);
 }
 
-/* contador circular contínuo */
+/* contador circular */
 .contador-circular-wrapper {
   position: relative;
   width: 100px;
@@ -119,7 +120,7 @@ label {
   font-weight: bold;
 }
 
-/* Caixa de texto */
+/* área de texto */
 .area-texto-escura {
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -132,11 +133,15 @@ label {
   font-size: 15px;
 }
 
+.area-texto-escura:focus {
+  outline: none;
+}
+
 .area-texto-escura::placeholder {
   color: #555555;
 }
 
-/* botões */
+/* botões padrão */
 .botao-acao {
   flex: 1;
   background: rgba(255, 255, 255, 0.08);
@@ -158,13 +163,46 @@ label {
   background: rgba(255, 255, 255, 0.16);
 }
 
+/* mini botões de pontuação */
+.botao-mini {
+  min-width: 60px;
+  flex: 0 0 60px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.botao-mini[data-simbolo=" "] {
+  flex: 1 0 140px;
+  min-width: 140px;
+}
+
+.botao-mini[data-simbolo="\\n"] {
+  flex: 0 0 90px;
+  min-width: 90px;
+}
+
 /* responsividade */
+@media (max-width: 992px) {
+  .video-quadro {
+    height: 400px;
+  }
+}
+
 @media (max-width: 768px) {
   .video-quadro {
-    height: 280px;
+    height: 300px;
   }
 
   .caixa-predicao-externa {
     min-width: 100px;
+  }
+
+  .botao-mini {
+    min-width: 52px;
+    flex: 0 0 52px;
+  }
+
+  .botao-mini[data-simbolo=" "] {
+    flex: 1 0 120px;
   }
 }

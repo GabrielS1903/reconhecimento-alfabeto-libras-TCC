@@ -33,7 +33,6 @@
 
           <!-- Linha inferior com predição e contador -->
           <div class="d-flex align-items-center justify-content-start gap-4 mt-4 flex-wrap">
-
             <!-- Caixa de predição fora da câmera -->
             <div class="caixa-predicao-externa p-3">
               <div id="rotulo-predicao" class="rotulo-predicao">—</div>
@@ -46,12 +45,12 @@
                 <circle class="progress-ring-bg" cx="50" cy="50" r="45" />
                 <circle id="progress-ring-circle" class="progress-ring-bar" cx="50" cy="50" r="45" />
               </svg>
-              <div id="contador" class="contador-circular-numero">3</div>
+              <div id="contador" class="contador-circular-numero">2</div>
             </div>
 
             <div>
               <div class="small texto-suporte">
-                Mantenha o sinal por 3 segundos para confirmar a letra
+                Mantenha o sinal por 2 segundos para confirmar a letra
               </div>
             </div>
           </div>
@@ -62,8 +61,30 @@
       <div class="col-lg-5">
         <div class="card p-3 h-100 d-flex flex-column">
           <h5 class="mb-3">Texto</h5>
-          <textarea id="saida-texto" class="form-control area-texto-escura mb-3" rows="12" readonly></textarea>
-          
+
+          <textarea
+            id="saida-texto"
+            class="form-control area-texto-escura mb-3"
+            rows="12"
+            placeholder="O texto aparecerá aqui..."
+          ></textarea>
+
+          <!-- Mini botões -->
+          <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center">
+            <button class="btn botao-acao botao-mini" data-simbolo=" ">Espaço</button>
+            <button class="btn botao-acao botao-mini" data-simbolo="\t">Tab</button>
+            <button class="btn botao-acao botao-mini" data-simbolo=".">.</button>
+            <button class="btn botao-acao botao-mini" data-simbolo=",">,</button>
+            <button class="btn botao-acao botao-mini" data-simbolo=";">;</button>
+            <button class="btn botao-acao botao-mini" data-simbolo="?">?</button>
+            <button class="btn botao-acao botao-mini" data-simbolo="!">!</button>
+            <button class="btn botao-acao botao-mini" data-simbolo=":">:</button>
+            <button class="btn botao-acao botao-mini" data-simbolo='"'>&quot;</button>
+            <button class="btn botao-acao botao-mini" data-simbolo="-">-</button>
+            <button class="btn botao-acao botao-mini" data-simbolo="\n">Enter</button>
+          </div>
+
+          <!-- Ações -->
           <div class="mt-auto d-flex gap-2">
             <button id="botao-apagar" class="btn botao-acao flex-fill">Backspace</button>
             <button id="botao-limpar" class="btn botao-acao flex-fill">Limpar</button>

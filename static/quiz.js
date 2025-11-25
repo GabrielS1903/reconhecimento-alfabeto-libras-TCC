@@ -12,7 +12,10 @@ const modalFinal = document.getElementById('modal-final');
 const btnReiniciar = document.getElementById('btn-reiniciar');
 
 // ======== Variáveis de controle ========
-let alfabeto = ['A', 'B', 'C']; // apenas A, B e C por enquanto
+let alfabeto = ['A', 'B', 'C', 'D', 'E', 
+                'F', 'G', 'I', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R',
+                'S', 'T', 'U', 'V', 'W'];
 let letrasRestantes = [];
 let letraAtual = null;
 let contando = false;
@@ -56,7 +59,7 @@ function proximaLetra() {
   progressoQuizEl.textContent = `${alfabeto.length - letrasRestantes.length} / ${alfabeto.length}`;
   mensagemQuiz.textContent = "";
   atualizarProgresso(0);
-  contadorEl.textContent = "3";
+  contadorEl.textContent = "2";
   contando = false;
   tempoInicial = null;
 }
@@ -128,30 +131,30 @@ async function enviarFrame() {
     }
 
     const tempoDecorrido = (Date.now() - tempoInicial) / 1000;
-    const progresso = Math.min(tempoDecorrido / 3, 1);
+    const progresso = Math.min(tempoDecorrido / 2, 1);
     atualizarProgresso(progresso);
 
-    const segundos = 3 - Math.floor(tempoDecorrido);
+    const segundos = 2 - Math.floor(tempoDecorrido);
     contadorEl.textContent = segundos > 0 ? segundos : 0;
 
     // Reinicia contagem se a letra mudar ou confiança cair
-    if (letraPredita !== rotulo.dataset.ultimaLetra || confianca < 0.8) {
+    if (letraPredita !== rotulo.dataset.ultimaLetra || confianca < 0.5) {
       rotulo.dataset.ultimaLetra = letraPredita;
       tempoInicial = Date.now();
       atualizarProgresso(0);
-      contadorEl.textContent = "3";
+      contadorEl.textContent = "20";
     }
 
-    // Validação só após 3 segundos
-    if (tempoDecorrido >= 3) {
-      if (letraPredita === letraAtual && confianca >= 0.8) {
+    // Validação só após 2 segundos
+    if (tempoDecorrido >= 2) {
+      if (letraPredita === letraAtual && confianca >= 0.5) {
         aplicarFlash('correto');
         setTimeout(proximaLetra, 700);
       } else {
         aplicarFlash('errado');
         tempoInicial = Date.now();
         atualizarProgresso(0);
-        contadorEl.textContent = "3";
+        contadorEl.textContent = "20";
       }
       contando = false;
     }
